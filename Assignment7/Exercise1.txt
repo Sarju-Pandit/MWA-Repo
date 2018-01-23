@@ -1,0 +1,9 @@
+{
+	_id: objectId(),
+	isbn: '1234ISBN',
+    category: [ {author: 'Ram'}, {author: 'Hari'}],
+	tag: ['Comedy','Romantic','Thriller'],
+	student: '123456',
+	phone: '9860569842',
+	returnDate: '02/10/2018'
+}
