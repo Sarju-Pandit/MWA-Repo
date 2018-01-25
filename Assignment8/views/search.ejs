@@ -1,0 +1,58 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <a href="/add">Add</a>
+    <a href="/update">Update</a>
+    <a href="/delete">Delete</a>
+    <a href="/search">Search</a>
+    <br><br>
+    <script>
+      navigator.geolocation.getCurrentPosition(success, fail);
+       
+      function success(position){
+       var lot = (position.coords.longitude);
+       var lat = (position.coords.latitude);
+
+       document.getElementById('longi').value= lot;
+       document.getElementById('lati').value= lat;
+       
+      }
+      
+      function fail(msg){
+        console.log(msg.code + msg.message);
+      }
+    </script>
+    <form action="" method="post">      
+            Category:<br>
+            <input type="text" name="category" placeholder="Enter category">
+            <input type="hidden" id="longi" name="longi" value="">
+            <input type="hidden" id="lati" name="lati" value="">
+            <br><br>
+            <input type="submit" value="Submit">
+    </form> 
+    <br><br>
+    <div class="divTable" style="width: 100%;border: 1px solid #000;" >
+      <div class="divTableBody">
+          <div class="divTableRow">
+            <div class="divTableCell">Location Name</div>
+            <div class="divTableCell">Category</div>
+            <div class="divTableCell">Location</div>
+          </div>
+          <% for(var i=0; i < datas.length; i++) { %>
+                <div class="divTableRow">
+                  <div class="divTableCell"><%= datas[i].name %></div>
+                  <div class="divTableCell"><%= datas[i].category %></div>
+                  <div class="divTableCell"><%= datas[i].coord %></div>
+                </div>
+           <% } %>
+      </div>
+    </div>
+      
+  </body>
+</html>
